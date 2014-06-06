@@ -3,11 +3,14 @@
 	<head>
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <title>CodeWars</title>
-	    <link href="bootstrap-3.1.1-dist/css/bootstrap.min.css" rel="stylesheet">
+	    <link href="assets/bootstrap-3.1.1-dist/css/bootstrap.min.css" rel="stylesheet">
 	    <link href="firstpage.css" rel="stylesheet">
+	    <link href="assets/bootstrap-social.css" rel="stylesheet">
+	    <link href="assets/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	</head>
 	<body>
 	<!-- Facebook login script -->
+		<div id="fb-root"></div>
 		<script>
 			// This is called with the results from from FB.getLoginStatus().
 			function statusChangeCallback(response) {
@@ -19,7 +22,7 @@
 			    // for FB.getLoginStatus().
 			    if (response.status === 'connected') {
 			      // Logged into your app and Facebook.
-			      testAPI();
+			 
 			    } else if (response.status === 'not_authorized') {
 			      // The person is logged into Facebook, but not your app.
 			      document.getElementById('status').innerHTML = 'Please log ' +
@@ -45,26 +48,29 @@
 	        	FB.init({
 	          	appId      : '775332532487208',
           		xfbml      : true,
-          		
+          		status     : true, 
+    			cookie     : true,
+    			version    : 'v2.0'
+
         		});
       		};
 
-      		(function(d, s, id){
-	         var js, fjs = d.getElementsByTagName(s)[0];
-	         if (d.getElementById(id)) {return;}
-	         js = d.createElement(s); js.id = id;
-	         js.src = "https://connect.facebook.net/en_US/sdk.js&appId=775332532487208";
-	         fjs.parentNode.insertBefore(js, fjs);
-       		}(document, 'script', 'facebook-jssdk'));
+			(function(d, s, id) {
+				  var js, fjs = d.getElementsByTagName(s)[0];
+				  if (d.getElementById(id)) return;
+				  js = d.createElement(s); js.id = id;
+				  js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&appId=775332532487208&version=v2.0";
+				  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
 
-       		function testAPI() {
-			    console.log('Welcome!  Fetching your information.... ');
-			    FB.api('/me', function(response) {
-			      console.log('Successful login for: ' + response.name);
-			      document.getElementById('status').innerHTML =
-			        'Thanks for logging in, ' + response.name + '!';
-			 	});
+     		function FBLogin(){
+    			FB.login(function(response){
+        			if(response.authResponse){
+            			window.location.href = "actions.php?action=fblogin";
+        			}
+    			}, {scope: 'email'});
 			}
+
     	</script>
 
 
@@ -80,11 +86,21 @@
 	    	</center>	
 	    </div>
 
-	  	<div class="container" id="links">    		
+	  	<!--<div class="container" id="links">    		
 	    	<a href="#login" data-toggle="modal" class="logsign">log in</a>
 	   		<a href="#signup" data-toggle="modal" id="logsign">sign up</a>
-	    </div>
+	   		
+	    </div>-->
+	    <!--<div class="container" id="fb">
+	    	<div class="fb-login-button" data-max-rows="0" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
+	    </div>-->
 
+	    <a href="#" class="btn btn-social btn-facebook" onclick="FBLogin()">
+			<i class="fa fa-facebook"></i>
+			Sign in with Facebook
+		</a>
+
+	    <!--
 	    <div class="modal fade" id="login" role="dialog">
 	    	<div class="modal-dialog">
 	    		<div class="modal-content">
@@ -153,11 +169,12 @@
 					<div class="modal-footer">
 						<a href="" data-dismiss="modal" class="btn btn-default">Close</a>
 						<button type="submit" class="btn btn-primary">Submit</button>
+						<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
 	    			</div>
 	    		</div>
 	    	</div>
 	    </div>
-
+		-->
 
 	    <div class="modal fade" id="jg" role="dialog">
 	    	<div class="modal-dialog">
@@ -181,11 +198,12 @@
 	    		</div>
 	    	</div>
 	    </div>
+	   
 
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    	<script src="bootstrap-3.1.1-dist/js/bootstrap.min.js"> </script>
+    	<!-- Include all compiled plugins (below), or include individual files as needed -->
+    	<script src="assets/bootstrap-3.1.1-dist/js/bootstrap.min.js"> </script>
 
     </body>
 
