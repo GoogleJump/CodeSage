@@ -1,0 +1,48 @@
+.logo {
+	position: absolute;
+	top: 6px;
+	margin-left: 10px;
+	z-index: 0;
+	font-family: Courier;
+	font-size: 30px;
+}
+
+.CodeMirror {
+	position: relative;
+	display: inline-block;
+	border: solid 1px;
+	margin-top: 10%;
+	overflow-x: hidden;
+	
+}
+
+#submit {
+	display: inline-block;
+	float: left;
+	margin-left: 25%;
+}
+
+.effect2 {
+	-webkit-filter: blur(2px);
+}
+
+.output {
+	position : relative;
+	width: 43%;
+	height: 100px;
+	border: solid 1px;
+	margin-top: 10%;
+	margin-left: 5%;
+	overflow: auto;
+
+}
+
+.effect {
+	position: relative;
+	display: inline-block;
+	border-radius: 100%;
+	border: solid 1px;
+	background-color: white;
+	width: 70px;
+	height: 70px;
+}
