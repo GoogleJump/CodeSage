@@ -7,7 +7,7 @@ $(document).ready(function() {
 	$('#ef2').click(
 		function() {
 			var editor = $('.CodeMirror')[1];
-			$(editor).addClass('effect2');
+			$(editor).toggleClass('blur');
 		}
 
 	);

@@ -78,11 +78,12 @@ int main() {
 	</script>
 
 
-	<a class="btn btn-danger btn-md" id="submit" onclick="showResult()">Submit</a>
-
-	<div class="effect" id="ef1">effect 1</div>
-	<div class="effect" id="ef2">effect 2</div>
-	<div class="effect" id="ef3">effect 3</div>
+	
+	<div id="effects">
+		<div class="effect" id="ef1"></div>
+		<div class="effect" id="ef2"></div>
+		<div class="effect" id="ef3"></div>
+	</div>
 	<!-- <div class="effect" id="ef4">effect 4</div>
 	<div class="effect" id="ef5">effect 5</div>
 	<div class="effect" id="ef6">effect 6</div>
@@ -97,6 +98,7 @@ int main() {
 	<div class="output" id="out1" readonly="true"></div>
 	<div class="output" id="out2" readonly="true"></div>
 
+	<a class="btn btn-danger btn-md" id="submit" onclick="showResult()">Submit</a>
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>	

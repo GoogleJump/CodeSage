@@ -22,20 +22,27 @@
 	margin-left: 25%;
 }
 
-.effect2 {
+.blur {
 	-webkit-filter: blur(2px);
 }
 
 .output {
 	position : relative;
-	width: 43%;
+	display: inline-block;
+	width: 40%;
 	height: 100px;
 	border: solid 1px;
-	margin-top: 10%;
 	margin-left: 5%;
 	overflow: auto;
+	margin-top: 40px;
 
 }
+
+#effects {
+	display: block;
+	margin-left: 10%;
+}
+
 
 .effect {
 	position: relative;
@@ -45,4 +52,17 @@
 	background-color: white;
 	width: 70px;
 	height: 70px;
+}
+
+#ef1 {
+	background-color: red;
+}
+
+#ef2 {
+	background-color: yellow;
+	top: 35px;
+}
+
+#ef3 {
+	background-color: green;
 }

@@ -48,7 +48,7 @@
       //finally get the submission results
       $details = $client->getSubmissionDetails( $user, $pass, $result['link'], true, true, true, true, true );
       if ( $details['error'] == 'OK' ) {
-            var_dump( $details );
+            //var_dump( $details );
             echo $details["output"];
       } else {
         //we got some error
