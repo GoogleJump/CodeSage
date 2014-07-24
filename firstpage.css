@@ -1,12 +1,11 @@
 .background-image {
 	position: fixed;
-	background: url(background.png);
+	background: url(images/background.png);
 	background-size: cover;
 	top: 32px;
 	width: 1200px;
     height: 800px;
 }
-
 
 #buttons {
 	position: absolute;
@@ -36,20 +35,25 @@
 	font-size: 30px;
 }
 
-
-
-#links {
+.btn-facebook {
 	position: relative;
 	/*border: solid;*/
-	display: block;
-	top: 20px;
-	width: 140px;
-	float: right;
+	margin-top: 300px;
 }
 
+/*#links {
+	position: relative;
+	border: solid;
+	display: block;
+	top: 20px;
+	margin-left: 100px;
+	width: 40px;
+}*/
 
-
-
-
+/*iframe {
+	width: 100px;
+	height: 30px;
+	margin-left: 80%;
+}*.
 
 

@@ -1,3 +1,8 @@
+<?php
+	session_start();
+?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,43 +15,112 @@
     	<script src="assets/codemirror-4.0/lib/codemirror.js"></script>
 		<script src="assets/codemirror-4.0/mode/python/python.js"></script>
 		<script src="assets/codemirror-4.0/mode/javascript/javascript.js"></script>
+		<script src="assets/codemirror-4.0/mode/clike/clike.js"></script>
 		<script type="text/javascript" src="playpage.js"></script>	
     </head>
 <body>
+
+	<script type="text/javascript">
+		var timer;
+		var totalsecs
+
+		function createTimer(timerId, time) {
+			timer = document.getElementById(timerId);
+			totalsecs = time;
+			updateTimer();
+			window.setTimeout("tick()", 1000);
+		}
+
+		function tick() {
+			if(totalsecs == 0) {
+				window.location.replace('postgame.php');
+				return;
+			}
+			totalsecs -= 1;
+			updateTimer()
+			window.setTimeout("tick()", 1000);
+		}
+
+		function updateTimer() {
+			var seconds = totalsecs;
+
+			var minutes = Math.floor(seconds/60);
+			seconds -= minutes * 60;
+
+			var timeStr = leadingZero(minutes) + ":" + leadingZero(seconds);
+
+			timer.innerHTML = timeStr;
+		}
+
+
+		function leadingZero(time) {
+			return time < 10 ? "0" + time : "" + time;
+ 		}
+	</script>
+
+	<img id="pic" src= <?php echo "https://graph.facebook.com/" . $_SESSION["profpic"] . "/picture" ?> />
 
 	<p class="logo">
 	    CodeWars_
 	</p>
 
-	
-	<div class="container">
-		<textarea id="player">#include<stdio.h>
-int main() {
-    printf("hello");
-    return 0;
-}</textarea>
-		<textarea id="te">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
-	</div>
 
+	<div id="timer"></div>
+	<script type="text/javascript">window.onload = createTimer("timer", 220);</script>
+
+
+	<div>
+		<div class="p1">
+			<textarea class="text" id="player">
+#include<stdio.h>
+int main() {
+	printf("hello");
+	return 0;
+}
+			</textarea>
+
+			<div class="output" id="out1" readonly="true"></div>
+
+			<div id="effects">
+				<div class="effect" id="ef1"></div>
+				<div class="effect" id="ef2"></div>
+				<div class="effect" id="ef3"></div>
+			</div>
+
+			<a class="btn btn-danger btn-md" id="submit" onclick="showResult()">Submit</a>
+		</div>
+
+
+		<div class="p2">
+			<textarea class="text" id="te">Lorem ipsum dolor sit amet</textarea>
+
+			<div class="output" id="out2" readonly="true"></div>
+
+			<div id="fake_effects">
+				<div class="fake effect"></div>
+				<div class="fake effect" id="fef2"></div>
+				<div class="fake effect"></div>
+			</div>
+
+			<button class="btn btn-default btn-md fake" id="fake_submit">Submit</button>
+
+		</div>
+	
+	</div>
 
 	<script>
 	var myCodeMirror1 = CodeMirror.fromTextArea(document.getElementById("player"), {
 		lineNumbers: true,
 	});
 
-	myCodeMirror1.setSize("43%", "500px");
+	myCodeMirror1.setSize("90%", "400px");
 
 	var myCodeMirror2 = CodeMirror.fromTextArea(document.getElementById("te"), {
 		lineNumbers: true,
 		readOnly: "nocursor",
 	});
 
-	myCodeMirror2.setSize("43%", "500px");
+	myCodeMirror2.setSize("90%", "400px");
 
 	console.log(myCodeMirror1.getValue());
 
@@ -69,7 +143,10 @@ int main() {
           }
         }
 
-        xmlhttp.open('GET', 'ideone.php?code=' + encodeURIComponent(code), true); //+ '&input=' + encodeURIComponent(input)
+        lang = <?php echo json_encode($_POST["language"]); ?>;
+
+        xmlhttp.open('GET', 'ideone.php?code=' + encodeURIComponent(code) + 
+        '&language=' + encodeURIComponent(lang), true); //+ '&input=' + encodeURIComponent(input)
         xmlhttp.send();
       }
 
@@ -78,32 +155,11 @@ int main() {
 	</script>
 
 
-	
-	<div id="effects">
-		<div class="effect" id="ef1"></div>
-		<div class="effect" id="ef2"></div>
-		<div class="effect" id="ef3"></div>
-	</div>
-	<!-- <div class="effect" id="ef4">effect 4</div>
-	<div class="effect" id="ef5">effect 5</div>
-	<div class="effect" id="ef6">effect 6</div>
-	
-	<button class="btn btn-primary btn-sm" id="ef2">effect 2</button>
-	<button class="btn btn-primary btn-sm" id="ef3">effect 3</button>
-	<button class="btn btn-primary btn-sm" id="ef4">effect 4</button>
-	<button class="btn btn-primary btn-sm" id="ef5">effect 5</button>
-	<button class="btn btn-primary btn-sm" id="ef6">effect 6</button>
-	-->
-
-	<div class="output" id="out1" readonly="true"></div>
-	<div class="output" id="out2" readonly="true"></div>
-
-	<a class="btn btn-danger btn-md" id="submit" onclick="showResult()">Submit</a>
-
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>	
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="assets/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
 
 </body>
 </html>
+
+
