@@ -4,7 +4,22 @@
   $user = 'rezanayebi';
   $pass = 'yugiho';
 
-  $lang = 1; // C++
+  $language = $_GET["language"];
+
+  if($language === "cpp") {
+    $lang = 1; // C++
+  } elseif($language === "java") {
+    $lang = 10;
+  } elseif($language === "python") {
+    $lang = 4;
+  } elseif($language === "c") {
+    $lang = 11;
+  } elseif($language === "php") {
+    $lang = 29;
+  } else {
+    echo "error selecting language <br/>";
+  }
+  
 
   //$code = '';
   $code = $_GET['code'];
@@ -40,16 +55,18 @@
 
     if ($status['error'] == 'OK') {
       while ($status['status'] != 0) {
-        sleep(3);
+        //sleep(3);
         //$status = $client->call('getSubmissionStatus', $params);
         $status = $client->getSubmissionStatus($user, $pass, $result['link']);
       }
 
       //finally get the submission results
-      $details = $client->getSubmissionDetails( $user, $pass, $result['link'], true, true, true, true, true );
+      while(!($details = $client->getSubmissionDetails( $user, $pass, $result['link'], true, true, true, true, true)))
+        echo "hi";
+      //$details = $client->getSubmissionDetails( $user, $pass, $result['link'], true, true, true, true, true);
       if ( $details['error'] == 'OK' ) {
-            //var_dump( $details );
-            echo $details["output"];
+          echo $details["stderr"];
+          echo $details["output"];
       } else {
         //we got some error
         var_dump( $details );
