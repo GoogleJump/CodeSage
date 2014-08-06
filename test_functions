@@ -1,8 +1,8 @@
 JAVA
 
 Factorial
-Input: 5, 4
-Output: 120, 24
+Input: 5
+Output: 120
 
 
 import java.util.Scanner;
@@ -12,8 +12,11 @@ class Factorial
    public static void main(String args[])
    {
       int n, c, fact = 1;
-
-      n = Integer.parseInt(args[0]);
+ 
+      System.out.println("Enter an integer to calculate it's factorial");
+      Scanner in = new Scanner(System.in);
+ 
+      n = in.nextInt();
  
       if ( n < 0 )
          System.out.println("Number should be non-negative.");
@@ -22,16 +25,52 @@ class Factorial
          for ( c = 1 ; c <= n ; c++ )
             fact = fact*c;
  
-         System.out.println(fact);
+         System.out.println("Factorial of "+n+" is = "+fact);
       }
    }
 }
 
-============================================================================
 
+===============================================================================
+Calculates Average.
+// XXX Something is wrong!!!
+
+import java.util.Scanner;
+
+class main_class {
+    public static void main(String[] args){
+      String sentinel = "";
+      int sum = 0;
+      int counter = 0;
+      double mean = 0.0;
+      Scanner NumScanner = new Scanner(System.in);
+ 
+      System.out.println("Enter numbers to add. Enter \"d\" when done.");
+ 
+      System.out.print("Enter number: ");
+      sentinel = NumScanner.next();
+      System.out.println();
+ 
+      while(!sentinel.equals("d") && !sentinel.equals("D")) {
+           sum += Integer.parseInt(sentinel);
+           counter++;
+ 
+           System.out.print("Enter number: ");
+           sentinel = NumScanner.next();
+           System.out.println();
+      }
+ 
+      mean = (sum*1.0)/counter;
+ 
+      System.out.println();
+      System.out.println("The arithmetic mean is: " + mean +".");
+    }
+}
+
+==============================================================================
 Program that reverses a string
-// Input: sir, tree
-// Output: ris, eert
+// Input: sir
+// Output: ris
 import java.util.*;
  
 class ReverseString
@@ -39,22 +78,24 @@ class ReverseString
    public static void main(String args[])
    {
       String original, reverse = "";
-     
-      original = args[0];
+      Scanner in = new Scanner(System.in);
+ 
+      System.out.println("Enter a string to reverse");
+      original = in.nextLine();
  
       int length = original.length();
  
       for ( int i = length - 1 ; i >= 0 ; i-- )
          reverse = reverse + original.charAt(i);
  
-      System.out.println(reverse);
+      System.out.println("Reverse of entered string is: "+reverse);
    }
 }
 
 ============================================================================
 Program determines if an entered string is a palindrome or not.
-// Input: madam, free
-// Output: true, false
+// Input: madam
+// Output: Entered string is a palindrome.
 
 import java.util.*;
  
@@ -63,8 +104,10 @@ class Palindrome
    public static void main(String args[])
    {
       String original, reverse="";
-   
-      original = args[0];
+      Scanner in = new Scanner(System.in);
+ 
+      System.out.println("Enter a string to check if it is a palindrome");
+      original = in.nextLine();
  
       int length = original.length();
  
@@ -72,9 +115,9 @@ class Palindrome
          reverse = reverse + original.charAt(i);
  
       if (original.equals(reverse))
-         System.out.println("true");
+         System.out.println("Entered string is a palindrome.");
       else
-         System.out.println("false");
+         System.out.println("Entered string is not a palindrome.");
  
    }
 }	
@@ -82,6 +125,37 @@ class Palindrome
 example: "madam" is a palindrome
 
 
+==============================================================================
+Java program that generates prime numbers from 1 to 100.
+
+class GeneratePrimeNumbersExample {
+ 
+        public static void main(String[] args) {
+               
+                //define limit
+                int limit = 100;
+               
+                System.out.println("Prime numbers between 1 and " + limit);
+               
+                //loop through the numbers one by one
+                for(int i=1; i < 100; i++){
+                       
+                        boolean isPrime = true;
+                       
+                        //check to see if the number is prime
+                        for(int j=2; j < i ; j++){
+                               
+                                if(i % j == 0){
+                                        isPrime = false;
+                                        break;
+                                }
+                        }
+                        // print the number
+                        if(isPrime)
+                                System.out.print(i + " ");
+                }
+        }
+}
 
 ===============================================================================
 Create an array and write a program that reverses elements of the array.
@@ -148,17 +222,18 @@ int main()
 // Input: 4 Output: 24 
 
 #include<iostream>
-#include<cstdlib>
 
 using namespace std;
 
-int main(int argc, char** argv)
+int main()
 
 {
 
     int num,factorial=1;
 
-    num = atoi(argv[1]);
+    cout<<" Enter Number To Find Its Factorial:  ";
+
+    cin>>num;
 
     for(int a=1;a<=num;a++)
 
@@ -461,7 +536,3 @@ function RestaDeArrays($vectorA,$vectorB)
 ?> 
 
 ===============================================================================
-
-
-
-
