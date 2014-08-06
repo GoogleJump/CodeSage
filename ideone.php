@@ -66,7 +66,7 @@
 
       // You can now get the output with execution and compilation info
       if ( $details['error'] == 'OK' ) {
-          echo $details["stderr"];
+          echo $details["cpminfo"];
           echo $details["output"];
       } else {
         //we got some error
