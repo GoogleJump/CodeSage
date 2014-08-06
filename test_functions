@@ -13,7 +13,6 @@ class Factorial
    {
       int n, c, fact = 1;
  
-      System.out.println("Enter an integer to calculate it's factorial");
       Scanner in = new Scanner(System.in);
  
       n = in.nextInt();
@@ -25,47 +24,12 @@ class Factorial
          for ( c = 1 ; c <= n ; c++ )
             fact = fact*c;
  
-         System.out.println("Factorial of "+n+" is = "+fact);
+         System.out.println(fact);
       }
    }
 }
 
 
-===============================================================================
-Calculates Average.
-// XXX Something is wrong!!!
-
-import java.util.Scanner;
-
-class main_class {
-    public static void main(String[] args){
-      String sentinel = "";
-      int sum = 0;
-      int counter = 0;
-      double mean = 0.0;
-      Scanner NumScanner = new Scanner(System.in);
- 
-      System.out.println("Enter numbers to add. Enter \"d\" when done.");
- 
-      System.out.print("Enter number: ");
-      sentinel = NumScanner.next();
-      System.out.println();
- 
-      while(!sentinel.equals("d") && !sentinel.equals("D")) {
-           sum += Integer.parseInt(sentinel);
-           counter++;
- 
-           System.out.print("Enter number: ");
-           sentinel = NumScanner.next();
-           System.out.println();
-      }
- 
-      mean = (sum*1.0)/counter;
- 
-      System.out.println();
-      System.out.println("The arithmetic mean is: " + mean +".");
-    }
-}
 
 ==============================================================================
 Program that reverses a string
@@ -80,7 +44,6 @@ class ReverseString
       String original, reverse = "";
       Scanner in = new Scanner(System.in);
  
-      System.out.println("Enter a string to reverse");
       original = in.nextLine();
  
       int length = original.length();
@@ -88,7 +51,7 @@ class ReverseString
       for ( int i = length - 1 ; i >= 0 ; i-- )
          reverse = reverse + original.charAt(i);
  
-      System.out.println("Reverse of entered string is: "+reverse);
+      System.out.println(reverse);
    }
 }
 
@@ -106,7 +69,6 @@ class Palindrome
       String original, reverse="";
       Scanner in = new Scanner(System.in);
  
-      System.out.println("Enter a string to check if it is a palindrome");
       original = in.nextLine();
  
       int length = original.length();
@@ -125,37 +87,6 @@ class Palindrome
 example: "madam" is a palindrome
 
 
-==============================================================================
-Java program that generates prime numbers from 1 to 100.
-
-class GeneratePrimeNumbersExample {
- 
-        public static void main(String[] args) {
-               
-                //define limit
-                int limit = 100;
-               
-                System.out.println("Prime numbers between 1 and " + limit);
-               
-                //loop through the numbers one by one
-                for(int i=1; i < 100; i++){
-                       
-                        boolean isPrime = true;
-                       
-                        //check to see if the number is prime
-                        for(int j=2; j < i ; j++){
-                               
-                                if(i % j == 0){
-                                        isPrime = false;
-                                        break;
-                                }
-                        }
-                        // print the number
-                        if(isPrime)
-                                System.out.print(i + " ");
-                }
-        }
-}
 
 ===============================================================================
 Create an array and write a program that reverses elements of the array.
@@ -207,7 +138,6 @@ int main()
 {
   float gallons, liters;
 
-  cout << "Enter number of gallons: ";
   cin >> gallons; // Read the inputs from the user
 
   liters = gallons * 3.7854; // convert to liters
@@ -231,8 +161,6 @@ int main()
 
     int num,factorial=1;
 
-    cout<<" Enter Number To Find Its Factorial:  ";
-
     cin>>num;
 
     for(int a=1;a<=num;a++)
@@ -254,8 +182,8 @@ cout<<"Factorial of Given Number is ="<<factorial<<endl;
 
 // A program to find the Area and Perimeter of a Rectangle:
 
-// Input: width ==> 20, height ==> 3, 
-// Output: Area of Rectangle ==> 60, Perimeter of rectangle is ==> 46
+// Input: 20 3 
+// Output:60 46
 
 
 #include<iostream>
@@ -268,21 +196,17 @@ int main()
 
     int width,height,area,perimeter;
 
-    cout<<"Enter  Width of Rectangle = ";
-
     cin>>width;
-
-    cout<<"Enter  Height of Rectangle = ";
 
     cin>>height;
 
     area=height*width;
 
-    cout<<"Area of Rectangle ="<<area<<endl;
+    cout<<area<<endl;
 
     perimeter=2*(height+width);
 
-cout<<" Perimeter of rectangle is  "<<perimeter<<endl;
+cout<<" "<<perimeter<<endl;
 
 return 0;
 
