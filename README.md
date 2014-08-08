@@ -7,3 +7,9 @@ Some additional features of this platform are attacks that let player's disrupt/
 Devon Bernard
 * dwbcoding@gmail.com
 * [LinkedIn](https://www.linkedin.com/in/devonbernard)
+
+Reza Nayebi
+* nayebir@gmail.com
+
+Fred Gisa
+* gisaf16@gmail.com
